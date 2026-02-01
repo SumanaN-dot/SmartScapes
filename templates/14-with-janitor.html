@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+</head>
+
+<body>
+    <img src="{{ url_for('static', filename='images/14-with-janitor.png') }}" alt="ALT-TEXT" usemap="#image-map">
+    
+    <map name="image-map">
+        <area target="_self" alt="Janitorial Device" title="Janitorial Device" href="" coords="95,49,612,451" shape="rect">
+    </map>  
+
+    <script src="{{ url_for('static', filename='js/imageMapResizer.min.js') }}"> </script>
+    <script>
+        imageMapResize();
+        // To add:
+        // - dialogue
+    </script>
+</body>
+
+</html>
