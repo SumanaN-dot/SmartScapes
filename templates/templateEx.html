@@ -20,12 +20,17 @@
     <map name="image-map">
         <area target="_self" alt="" title="" href="{{ url_for('second') }}" coords="4029,3026,2,2" shape="rect">
     </map>
+    <div id="textbox"></div>
 
-    <script src="{{ url_for('static', filename='js/imageMapResizer.min.js') }}"> </script>
+    <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         // To add:
-        // - dialogue
+        dialogueIndex = 0;
+        textIndex = 0;
+
+        const dialogue = ["This is a sentence", "This is another"];
     </script>
 </body>
 
