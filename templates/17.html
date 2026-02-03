@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask App</title>
+    <title>SmartScapes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!-- <link rel="stylesheet" href="style/style.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -18,11 +20,20 @@
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-    <!-- <script src="js/imageMapResizer.min.js"> </script> -->
     <script>
         imageMapResize();
-        // To add:
-        // - dialogue
+
+        dialogue = ["You defeated the WEPA printer! The only thing left to do is walk through the exit doors."];
+
+        proxy = proxyText;
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            handleTextbox();
+        }
+
+        window.onload = setup;
     </script>
 </body>
 

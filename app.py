@@ -6,7 +6,7 @@ app = Flask(__name__)
 def home():
     # This should be the page for the consent form to
     # begin the app
-    return render_template('18.html')
+    return render_template('index.html')
 
 @app.route('/nine')
 def nine():
@@ -51,6 +51,10 @@ def thirteen_right():
 @app.route('/fourteen')
 def fourteen():
     return render_template('14.html')
+
+@app.route('/fourteen_a')
+def fourteen_a():
+    return render_template('14-a.html')
 
 @app.route('/fourteen_right')
 def fourteen_right():

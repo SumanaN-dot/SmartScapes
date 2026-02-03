@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartScapes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
         img {
@@ -13,7 +16,7 @@
         }
 
         #container {
-            visibility : hidden;
+            visibility: hidden;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -35,7 +38,8 @@
             from {
                 visibility: hidden;
                 opacity: 0;
-            } 
+            }
+
             to {
                 visibility: visible;
                 opacity: 100%;
@@ -128,23 +132,22 @@
             "Unfortunately for you, you realize that your midterm was on the third floor of MLC anyways, so you make the walk of shame back into the building."
         ];
 
-        let endHandler = {
+        let handler = {
             set(target, property, value, receiver) {
                 if (property == "textIndex" && value == 0
-                    && target.dialogueIndex == dialogue.length)
-                {
+                    && target.dialogueIndex == dialogue.length) {
                     container.classList.add("visible");
                 }
                 return Reflect.set(target, property, value, receiver);
             }
         };
 
-        proxy = new Proxy(textProps, endHandler);
+        proxy = new Proxy(textProps, handler);
 
         function setup() {
             textProps.dialogueIndex = -1;
             textProps.textIndex = 0;
-            handleTextbox(proxy);
+            handleTextbox();
         }
 
         window.onload = setup;
