@@ -17,28 +17,40 @@ let dialogueHandler = {
     }
 };
 
-let proxyText = new Proxy(textProps, dialogueHandler);
+const proxyText = new Proxy(textProps, dialogueHandler);
+let proxy;
 
-function revealText(text) {
-    if (proxyText.dialogueIndex == dialogue.length) {
+
+function revealText(text, proxy) {
+    if (textProps.dialogueIndex == dialogue.length) {
         closeTextbox();
-    } else if (proxyText.textIndex < text.length) {
-        textBox.textContent += text.charAt(proxyText.textIndex);
-        proxyText.textIndex++;
+    } else if (textProps.textIndex < text.length) {
+        textBox.textContent += text.charAt(textProps.textIndex);
+        textProps.textIndex++;
         setTimeout(revealText, typeSpeed, text);
-    } else if (proxyText.textIndex == text.length) {
-        textBox.onclick = handleTextbox;
+    } else if (textProps.textIndex == text.length) {
+        enableClick();
+        textBox.style.pointerEvents = "auto";
         textBox.style.cursor = "pointer";
     }
 }
 
+function disableClick() {
+    textBox.removeEventListener("click", handleTextbox);
+}
+
+function enableClick() {
+    textBox.addEventListener("click", handleTextbox);
+}
+
 function handleTextbox() {
-    textBox.onclick = null;
+    disableClick();
+    textBox.style.pointerEvents = "none";
     textBox.textContent = '';
-    proxyText.dialogueIndex++;
-    proxyText.textIndex = 0;
+    textProps.dialogueIndex++;
+    textProps.textIndex = 0;
     textBox.style.cursor = "wait";
-    revealText(dialogue[proxyText.dialogueIndex]);
+    revealText(dialogue[textProps.dialogueIndex], proxy);
 }
 
 function closeTextbox() {
@@ -48,11 +60,3 @@ function closeTextbox() {
 function openTextbox() {
     textBox.classList.remove("close-text");
 }
-
-function setup() {
-    textProps.dialogueIndex = -1;
-    textProps.textIndex = 0;
-    handleTextbox();
-}
-
-window.onload = setup;

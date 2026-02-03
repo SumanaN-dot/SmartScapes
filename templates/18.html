@@ -139,12 +139,15 @@
             }
         };
 
-        proxyText = new Proxy(textProps, endHandler);
+        proxy = new Proxy(textProps, endHandler);
 
-        // To add:
-        // - dialogue
-        // - this page in particular will need some js
-        // to add the final results 
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            handleTextbox(proxy);
+        }
+
+        window.onload = setup;
     </script>
 </body>
 
