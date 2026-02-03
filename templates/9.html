@@ -15,8 +15,8 @@
     <img src="{{ url_for('static', filename='images/9.png') }}" alt="Second floor west wing" usemap="#image-map">
     
     <map name="image-map">
-        <area target="_self" alt="Study area + dialogue" title="Study area + dialogue" href="" coords="2350,1922,48,791" shape="rect">
-        <area target="_self" alt="10" title="10" href="" coords="4023,3021,2667,2011,2650,759,3256,27,4017,21" shape="poly">
+        <area target="_self" alt="Study area + dialogue" href="javascript:void(0)" onclick="showStudy()" coords="2350,1922,48,791" shape="rect">
+        <area target="_self" alt="10" href="{{ url_for('ten') }}" coords="4023,3021,2667,2011,2650,759,3256,27,4017,21" shape="poly">
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
@@ -24,6 +24,8 @@
         imageMapResize();
         // To add:
         // - dialogue
+
+        // showStudy()
     </script>
 </body>
 

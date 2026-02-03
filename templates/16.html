@@ -15,7 +15,7 @@
     <img src="{{ url_for('static', filename='images/16.png') }}" alt="A WEPA printer blocks the MLC main exit" usemap="#image-map">
     
     <map name="image-map">
-        <area target="_self" alt="" title="" href="" coords="421,631,109,71" shape="rect">
+        <area target="_self" href="javascript:void(0);" onclick="startPuzzle()" coords="421,631,109,71" shape="rect">
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
@@ -23,6 +23,9 @@
         imageMapResize();
         // To add:
         // - dialogue
+        // startPuzzle()
+        // ---- startPuzzle() should redirect the user to 17
+        // ---- window.location.href = "17.html";
     </script>
 </body>
 

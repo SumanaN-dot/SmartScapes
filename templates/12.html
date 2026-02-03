@@ -15,9 +15,9 @@
     <img src="{{ url_for('static', filename='images/12.png') }}" alt="Hallway to 2nd Floor Exit" usemap="#image-map">
     
     <map name="image-map">
-        <area target="_self" alt="security desk, dialogue" title="security desk, dialogue" href="" coords="5691,4263,5266,82" shape="rect">
-        <area target="_self" alt="2nd floor exit, dialogue" title="2nd floor exit, dialogue" href="" coords="2128,332,4833,3069" shape="rect">
-        <area target="_self" alt="13" title="13" href="" coords="11,25,1131,4279" shape="rect">
+        <area target="_self" alt="security desk, dialogue" href="javascript:void(0)" onclick="showSecDesk()" coords="5691,4263,5266,82" shape="rect">
+        <area target="_self" alt="2nd floor exit, dialogue" title="2nd floor exit, dialogue" href="javascript:void(0)" onclick="showSecExit()" coords="2128,332,4833,3069" shape="rect">
+        <area target="_self" alt="13" href="{{ url_for('thirteen') }}" coords="11,25,1131,4279" shape="rect">
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
@@ -25,6 +25,9 @@
         imageMapResize();
         // To add:
         // - dialogue
+
+        // showSecDesk()
+        // showSecExit()
     </script>
 </body>
 

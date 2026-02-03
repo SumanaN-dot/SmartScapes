@@ -15,8 +15,8 @@
     <img src="{{ url_for('static', filename='images/10.png') }}" alt="Hallway to east wing" usemap="#image-map">
     
     <map name="image-map">
-        <area target="_self" alt="back + dialogue" title="back + dialogue" href="" coords="20,3388,5699,4255" shape="rect">
-        <area target="_self" alt="11a" title="11a" href="" coords="1899,968,3550,2304" shape="rect">
+        <area target="_self" alt="back + dialogue" href="javascript:void(0)" onclick="showBack()" coords="20,3388,5699,4255" shape="rect">
+        <area target="_self" alt="11a" href="{{ url_for('eleven_a') }}" coords="1899,968,3550,2304" shape="rect">
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
@@ -24,6 +24,8 @@
         imageMapResize();
         // To add:
         // - dialogue
+
+        // showBack()
     </script>
 </body>
 

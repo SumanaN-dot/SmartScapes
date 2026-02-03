@@ -15,8 +15,8 @@
     <img src="{{ url_for('static', filename='images/14-a.png') }}" alt="ALT-TEXT" usemap="#image-map">
     
     <map name="image-map">
-        <area target="_self" alt="Questions" title="Questions" href="" coords="3273,2141,2852,1404" shape="rect">
-        <area target="_self" alt="Questions" title="Questions" href="" coords="741,1738,1219,2298" shape="rect">
+        <area target="_self" alt="Questions" href="javascript:void(0)" onclick="startPuzzle()" coords="3273,2141,2852,1404" shape="rect">
+        <area target="_self" alt="Questions" href="javascript:void(0)" onclick="startPuzzle()" coords="741,1738,1219,2298" shape="rect">
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
@@ -24,6 +24,9 @@
         imageMapResize();
         // To add:
         // - dialogue
+
+        // startPuzzle()
+        // --window.location.href = "fifteen.html"
     </script>
 </body>
 

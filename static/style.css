@@ -1,55 +1,57 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 img[usemap] {
-    width: 100vw;
-    height: 100vh;
-    display: block;
+  width: 100vw;
+  height: 100vh;
+  display: block;
 }
 
-    #textbox {
-      position: absolute;
-      width: 80vw;
-      height: 5vh;
-      bottom: 5vh;
-      left: 8vw;
-      background-color: lightsteelblue;
-      padding: 2vw;
-      border: 5px lightslategray outset;
-      border-radius: 5px;
-      font-family: "Pixelify Sans", sans-serif;
-      font-weight: 500;
-      font-size: 2.5vh;
-    }
+#textbox {
+  position: absolute;
+  width: 80vw;
+  bottom: 5vh;
+  left: 8vw;
+  background-color: lightsteelblue;
+  padding: 2vw;
+  border: 5px lightslategray outset;
+  border-radius: 5px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 500;
+  font-size: 2.5vh;
+}
 
-    .close-text {
-      animation: close-text 500ms ease-out forwards;
-    }
+.close-text {
+  animation: close-text 500ms ease-out forwards;
+}
 
-    @keyframes close-text {
-      0% {
-        transform: scaleX(1);
-      }
+@keyframes close-text {
+  0% {
+    transform: scaleX(1);
+  }
 
-      100% {
-        transform: scaleX(0);
-        display: none;
-      }
-    }
+  100% {
+    transform: scaleX(0);
+    display: none;
+  }
+}
 
-    .show-text {
-      animation: show-text 500ms ease-out forwards;
-    }
+.show-text {
+  animation: show-text 500ms ease-out forwards;
+}
 
-    @keyframes show-text {
-      0% {
-        transform: scaleX(0);
-        display: block;
-      }
-      100% {
-        transform: scaleX(1);
-      }
-    }
+@keyframes show-text {
+  0% {
+    transform: scaleX(0);
+    display: block;
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}

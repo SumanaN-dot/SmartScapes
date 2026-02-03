@@ -1,30 +1,58 @@
 const textBox = document.getElementById("textbox");
 
-var dialogueIndex = 0;
-var textIndex = 0;
-const typeSpeed = 25; // milliseconds per character
+const typeSpeed = 10; // milliseconds per character
+
+// https://medium.com/@praveenpr1998/watching-object-changes-in-javascript-with-proxies-62b1febae0f6
+
+var dialogue = [];
+
+let textProps = {
+    dialogueIndex: -1,
+    textIndex: 0
+}
+
+let dialogueHandler = {
+    set: function (target, property, value, receiver) {
+        return Reflect.set(target, property, value, receiver);
+    }
+};
+
+let proxyText = new Proxy(textProps, dialogueHandler);
 
 function revealText(text) {
-    if (dialogueIndex == dialogue.length) {
-        textBox.classList.add("close-text");
-    } else if (textIndex < text.length) {
-        textBox.textContent += text.charAt(textIndex);
-        textIndex++;
+    if (proxyText.dialogueIndex == dialogue.length) {
+        closeTextbox();
+    } else if (proxyText.textIndex < text.length) {
+        textBox.textContent += text.charAt(proxyText.textIndex);
+        proxyText.textIndex++;
         setTimeout(revealText, typeSpeed, text);
-    } else if (textIndex == text.length) {
+    } else if (proxyText.textIndex == text.length) {
         textBox.onclick = handleTextbox;
         textBox.style.cursor = "pointer";
-        dialogueIndex++;
     }
 }
 
 function handleTextbox() {
     textBox.onclick = null;
     textBox.textContent = '';
-    textIndex = 0;
+    proxyText.dialogueIndex++;
+    proxyText.textIndex = 0;
     textBox.style.cursor = "wait";
-    revealText(dialogue[dialogueIndex]);
+    revealText(dialogue[proxyText.dialogueIndex]);
 }
 
-// Start the reveal when the page loads
-window.onload = handleTextbox;
+function closeTextbox() {
+    textBox.classList.add("close-text");
+}
+
+function openTextbox() {
+    textBox.classList.remove("close-text");
+}
+
+function setup() {
+    textProps.dialogueIndex = -1;
+    textProps.textIndex = 0;
+    handleTextbox();
+}
+
+window.onload = setup;

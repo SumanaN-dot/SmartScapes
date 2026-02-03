@@ -16,14 +16,15 @@
         alt="An image of a janitorial device blocking an exit" usemap="#image-map">
 
     <map name="image-map">
-        <area target="_self" alt="Janitor" title="Janitor" href="" coords="668,416,1,1" shape="rect">
-        <area target="_self" alt="Back" title="Back" href="" coords="1,444,668,498" shape="rect">
+        <area target="_self" href="javascript:void(0)" onclick="obstacleDialogue()" coords="668,416,1,1" shape="rect">
+        <area target="_self" href="{{ url_for('fifteen') }}" coords="1,444,668,498" shape="rect">
     </map>
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
     <script>
         imageMapResize();
         // To add:
         // - dialogue
+        // -- obstacleDialogue()
     </script>
 </body>
 

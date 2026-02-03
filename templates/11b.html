@@ -15,8 +15,8 @@
     <img src="{{ url_for('static', filename='images/11b.png') }}" alt="Hallway going to exit + elevators on the right" usemap="#image-map">
     
     <map name="image-map">
-        <area target="_self" alt="14-with-janitor" title="14-with-janitor" href="" coords="3508,11,4268,5691" shape="rect">
-        <area target="_self" alt="11c" title="11c" href="" coords="989,1248,3140,3895" shape="rect">
+        <area target="_self" alt="14-with-janitor" href="{{ url_for('fourteen_with_janitor') }}" coords="3508,11,4268,5691" shape="rect">
+        <area target="_self" alt="11c" title="11c" href="{{ url_for('eleven_c') }}" coords="989,1248,3140,3895" shape="rect">
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>

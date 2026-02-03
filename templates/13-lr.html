@@ -15,9 +15,9 @@
     <img src="{{ url_for('static', filename='images/13-lr.png') }}" alt="Path to elevators" usemap="#image-map">
     
     <map name="image-map">
-        <area target="_self" alt="Restrooms, dialogue" title="Restrooms, dialogue" href="" coords="2210,764,3787,2842" shape="rect">
-        <area target="_self" alt="13-l-with-janitor" title="13-l-with-janitor" href="" coords="11,7,657,4263" shape="rect">
-        <area target="_self" alt="12" title="12" href="" coords="4931,16,5699,4271" shape="rect">
+        <area target="_self" alt="Restrooms, dialogue" href="javascript:void(0)" onclick="showRestroom()" coords="2210,764,3787,2842" shape="rect">
+        <area target="_self" alt="13-l-with-janitor" href="{{ url_for('thirteen_left_with_janitor') }}" coords="11,7,657,4263" shape="rect">
+        <area target="_self" alt="12" href="{{ url_for('twelve') }}" coords="4931,16,5699,4271" shape="rect">
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
@@ -25,6 +25,9 @@
         imageMapResize();
         // To add:
         // - dialogue
+
+        // showRestroom()
+        // dialogue
     </script>
 </body>
 

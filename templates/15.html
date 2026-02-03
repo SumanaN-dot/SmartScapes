@@ -16,8 +16,8 @@
 
     <map name="image-map">
         <area target="_self" alt="Restrooms" title="Restrooms" href="" coords="1947,857,3374,2654" shape="rect">
-        <area target="_self" alt="Left to 15-l" title="Left to 15-l" href="" coords="3,10,971,3877" shape="rect">
-        <area target="_self" alt="Right to 15-r" title="Right to 15-r" href="" coords="5164,15,4128,3876" shape="rect">
+        <area target="_self" href="{{ url_for('fifteen_left') }}" coords="3,10,971,3877" shape="rect">
+        <area target="_self" href="{{ url_for('fifteen_right') }}" coords="5164,15,4128,3876" shape="rect">
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>

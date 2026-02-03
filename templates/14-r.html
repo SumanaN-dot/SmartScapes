@@ -18,8 +18,8 @@
     <!-- IT MIGHT BE EASIER TO DO THEM AFTER WE ADD ALL THE HTML FILES FIRST -->
     <!-- THE EXACT TEXT WILL DEPEND ON THE FUNCTION NAME IN THE FLASK FILE -->
     <map name="image-map">
-        <area target="_self" alt="Bulletin Board" title="Bulletin Board" href="" coords="959,491,5388,3475" shape="rect">
-        <area target="_self" alt="Wall 14" title="Wall 14" href="" coords="3,5,5707,5,5691,4255,5421,3666,5429,433,853,427,820,3576,5364,3568,5658,4279,3,4247,3,3494,3,3241,3,492" shape="poly">
+        <area target="_self" alt="Bulletin Board" href="javascript:void(0)" onclick="showBulletin()" coords="959,491,5388,3475" shape="rect">
+        <area target="_self" alt="Wall 14" href="{{ url_for('fourteen') }}" coords="3,5,5707,5,5691,4255,5421,3666,5429,433,853,427,820,3576,5364,3568,5658,4279,3,4247,3,3494,3,3241,3,492" shape="poly">
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
@@ -27,6 +27,8 @@
         imageMapResize();
         // To add:
         // - dialogue
+
+        //function showBulletin()
     </script>
 </body>
 

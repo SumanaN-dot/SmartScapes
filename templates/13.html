@@ -15,9 +15,9 @@
     <img src="{{ url_for('static', filename='images/13.png') }}" alt="Jittery Joe's Cafe" usemap="#image-map">
 
     <map name="image-map">
-        <area target="_self" alt="12, dialogue" title="12, dialogue" href="" coords="3,23,748,4070" shape="rect">
-        <area target="_self" alt="13-r" title="13-r" href="" coords="5418,4062,4728,9" shape="rect">
-        <area target="_self" alt="Tv, dialogue + question" title="Tv, dialogue + question" href="" coords="3138,1477,3921,1857,3642,1656" shape="0">
+        <area target="_self" id="left" alt="12, dialogue" href="{{ url_for('twelve') }}" coords="3,23,748,4070" shape="rect">
+        <area target="_self" alt="13-r" href="{{ url_for('thirteen_right') }}"coords="5418,4062,4728,9" shape="rect">
+        <area target="_self" alt="Tv, question" href="javascript:void(0)" onclick="startPuzzle()" coords="3138,1477,3921,1857,3642,1656" shape="0">
     </map>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
@@ -25,6 +25,12 @@
         imageMapResize();
         // To add:
         // - dialogue
+
+        // const left_area = document.getElementByID("left");
+
+        // startPuzzle()
+        // -- dialogue
+        // -- left.href = "{{ url_for('fourteen') }}";
     </script>
 </body>
 
