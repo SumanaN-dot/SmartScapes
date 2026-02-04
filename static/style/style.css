@@ -27,6 +27,7 @@ img[usemap] {
 }
 
 .close-text {
+  display: none;
   animation: close-text 500ms ease-out forwards;
 }
 
@@ -37,18 +38,17 @@ img[usemap] {
 
   100% {
     transform: scaleX(0);
-    display: none;
   }
 }
 
 .show-text {
+  display: block;
   animation: show-text 500ms ease-out forwards;
 }
 
 @keyframes show-text {
   0% {
     transform: scaleX(0);
-    display: block;
   }
 
   100% {

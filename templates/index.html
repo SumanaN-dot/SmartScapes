@@ -27,7 +27,7 @@
             transform: translate(-50%, -50%);
             z-index: 2;
             color:#2b2d46;
-            background-color: #bbaeb5;
+            background-color: #9593a7;
             border: 3px solid #2b2d46;
             padding: 5px;
             text-align: center;
@@ -40,6 +40,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 25vw;
+            background-color: #2b2d46d0;
         }
 
         #controls > * {
@@ -51,7 +52,7 @@
         }
 
         .trapezoid {
-            border-bottom: 1em solid red;
+            border-bottom: 1em solid #9593a7;
             border-left: 1em solid transparent;
             border-right: 1em solid transparent;
             height: 0;
@@ -83,13 +84,15 @@
         <div class="trapezoid upside-down"></div>
     </div>
 
+    <div id="textbox"></div>
+
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
     <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
 
-        consent = document.getElementById("consent");
-        controls = document.getElementById("controls");
+        const consent = document.getElementById("consent");
+        const controls = document.getElementById("controls");
 
         function acceptConsent() {
             consent.style.display = "none";
@@ -108,14 +111,28 @@
             window.location.href = "{{ url_for('fourteen')}}";
         }
 
-        function showTips() {
-
-        }
-
         function about() {
-            
+            let newSentences = ["This should be a project description!"];
+            addDialogue(newSentences);
         }
 
+        function showTips() {
+            let newSentences = ["Hover your mouse around the screen and look for clickable elements.",
+                "Make sure to read the textboxes!"
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+        }
+
+        window.onload = setup;
     </script>
 </body>
 

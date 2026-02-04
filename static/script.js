@@ -47,7 +47,7 @@ function handleTextbox() {
     disableClick();
     textBox.style.pointerEvents = "none";
     textBox.textContent = '';
-    textProps.dialogueIndex++;
+    textProps.dialogueIndex += 1;
     textProps.textIndex = 0;
     textBox.style.cursor = "wait";
     revealText(dialogue[textProps.dialogueIndex], proxy);
@@ -55,8 +55,26 @@ function handleTextbox() {
 
 function closeTextbox() {
     textBox.classList.add("close-text");
+    textBox.classList.remove("show-text");
+    textBox.style.display = "none";
 }
 
 function openTextbox() {
     textBox.classList.remove("close-text");
+    textBox.classList.add("show-text");
+    textBox.style.display = "block";
+}
+
+function addDialogue(arrayOfSentencesToAdd) {
+    for (let sentence of arrayOfSentencesToAdd) {
+        dialogue.push(sentence);
+    }
+    // If this isn't the original dialogue, move the dialogue index back
+    // to counteract the effect of the handleTextbox method increasing
+    // dialogueIndex and detecting the end of the original dialogue array
+    if (textProps.dialogueIndex > -1) {
+        textProps.dialogueIndex--;
+    }
+    openTextbox();
+    handleTextbox();
 }
