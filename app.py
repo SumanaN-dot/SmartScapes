@@ -8,6 +8,75 @@ def home():
     # begin the app
     return render_template('index.html')
 
+@app.route('/one_back')
+def one_back():
+    return render_template('1-b.html')
+
+@app.route('/two')
+def two():
+    return render_template('2.html')
+
+@app.route('/three_a')
+def three_a():
+    return render_template('3-a.html')
+
+@app.route('/three_back')
+def three_b():
+    return render_template('3-b.html') 
+ 
+@app.route('/four_left_with_janitor')
+def four_left_with_janitor():
+    return render_template('4-l-with-janitor.html')
+
+@app.route('/four_right')
+def four_right():
+    return render_template('4-r.html')
+
+@app.route('4')
+def four():
+    return render_template('4.html')
+
+@app.route('/five_left')
+def five_left():
+    return render_template('5-l.html')
+
+@app.route('/five_right_left')
+def five_right_left():
+    return render_template('5-rl.html')
+
+@app.route('/five_right_left_a')
+def five_right_left_a():
+    return render_template('5-rla.html')
+
+@app.route('/five_right_left_b_left_to5_left')
+def five_right_left_b_left_to5_left():
+    return render_template('5-rlb-l-to5-l.html')
+
+@app.route('/five_right_right')
+def five_right_right():
+    return render_template('5-rr.html')
+
+@app.route('/five_with_wepa')
+def five_with_wepa():
+    return render_template('5-with-wepa.html')
+
+@app.route('/six')
+def six():
+    return render_template('6.html')
+
+@app.route('/seven')
+def seven():
+    return render_template('7.html')
+
+@app.route('/eight_left')
+def eight_left():
+    return render_template('8-l.html')
+
+@app.route('/eight')
+def eight():
+    return render_template('8.html')
+
+
 @app.route('/nine')
 def nine():
     return render_template('9.html')
