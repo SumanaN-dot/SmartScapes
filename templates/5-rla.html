@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask App</title>
+    <title>Smartscapes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
 </head>
 
@@ -17,7 +17,9 @@
 <img src="{{ url_for('static', filename='images/5-rla.png') }}" alt = "Engagement center hallway wing" usemap="#image-map">
 
 <map name="image-map">
-    <area target="_self" alt="" title="" href="{{ url_for('five_right_left_b_left_to5_left') }}" coords="2291,708,2839,1146" shape="rect">
+    <!-- <area target="_self" class="pointer" alt="TV" title="TV" href="javascript:void(0)" onclick="showPuzzle()" coords="2291,708,2839,1146" shape="rect"> -->
+    <!-- THE AREA ABOVE SHOULD REPLACE THE ONE BELOW AT SOME POINT -->
+    <area target="_self" class="pointer" alt="TV" title="TV" href="{{ url_for('five_right_left_b_left_to5_left') }}" coords="2291,708,2839,1146" shape="rect">
 </map>
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
 <!-- <script src="js/imageMapResizer.min.js"> </script> -->
@@ -25,6 +27,12 @@
         imageMapResize();
         // To add:
         // - dialogue
+
+        function showPuzzle() {
+            // to implement (this is what we need nupoor for. Skip this)
+            // after 
+            // window.location.href = "{{ url_for('five_right_left_b_left_to5_left') }}"
+        }
     </script>
 
 </body>

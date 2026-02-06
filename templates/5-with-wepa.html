@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask App</title>
+    <title>SmartScapes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
 </head>
 
@@ -17,8 +17,9 @@
 <img src="{{ url_for('static', filename='images/5-with-wepa.png') }}" usemap="#image-map">
 
 <map name="image-map">
-    <area target="_self" alt="" title="" href="javascript:void(0)" coords="121,179,242,380" shape="rect">
-    <area target="_self" alt="6" title="6" href="{{ url_for('six') }}" coords="548,309,466,12" shape="rect">
+    <area target="_self" class="pointer" alt="wepa" title="wepa" href="javascript:void(0)" coords="127,198,239,362" shape="rect">
+    <area target="_self" class="down" alt="Back" title="Back" href="javascript:void(0)" coords="-1,402,667,498" shape="rect">
+    <area target="_self" class="right" alt="Right" title="Right" href="{{ url_for('five_right') }}" coords="382,-1,668,338" shape="rect">
 </map>
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
 <!-- <script src="js/imageMapResizer.min.js"> </script> -->
