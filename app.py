@@ -100,6 +100,9 @@ def eight_left():
 def eight():
     return render_template('8.html')
 
+@app.route('/eight_right')
+def eight_right():
+    return render_template('8-r.html')
 
 @app.route('/nine')
 def nine():
