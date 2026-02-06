@@ -60,14 +60,15 @@ function closeTextbox() {
     textBox.classList.add("close-text");
     textBox.classList.remove("show-text");
     textBox.style.display = "none";
+    // Mark dialogue as complete and enable the door link
+    isDialogueComplete = true;
+    enableDoor();
 }
 
 function openTextbox() {
     textBox.classList.remove("close-text");
     textBox.classList.add("show-text");
     textBox.style.display = "block";
-    isDialogueComplete = true;
-    enableDoor();
 }
 
 function enableDoor() {
