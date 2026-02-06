@@ -56,6 +56,14 @@ def four():
 def five_left():
     return render_template('5-l.html')
 
+@app.route('/five_left_a')
+def five_left_a():
+    return render_template('5-la.html')
+
+@app.route('/five_right')
+def five_right():
+    return render_template('5-r.html')
+
 @app.route('/five_right_left')
 def five_right_left():
     return render_template('5-rl.html')
