@@ -17,8 +17,8 @@
 <img src="{{ url_for('static', filename='images/3-b.png') }}" alt = "Stairs to third floor lobby" usemap="#image-map">
 
 <map name="image-map">
-    <area target="_self" alt="" href="javascript:void(0)" coords="101,12,4860,1309" shape="rect">
-    <area target="_self" alt="3-l" href="{{ url_for('three_l') }}" coords="5687,4269,1,2730" shape="rect">
+    <area target="_self" class="up" alt="stairs" href="{{ url_for('four') }}" coords="101,12,4860,1309" shape="rect">
+    <area target="_self" class="down" alt="" href="javascript:void(0)" coords="5687,4269,1,2730" shape="rect">
 </map>
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
 <!-- <script src="js/imageMapResizer.min.js"> </script> -->

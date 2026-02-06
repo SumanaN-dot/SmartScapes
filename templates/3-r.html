@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask App</title>
+    <title>SmartScapes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
 </head>
 
@@ -17,11 +17,10 @@
 <img src="{{ url_for('static', filename='images/3-r.png') }}" alt = "Blocked hallway" usemap="#image-map">
 
 <map name="image-map">
-    <area target="_self" alt="" title="" href="javascript:void(0))" coords="40,373,716,538" shape="rect">
-    <area target="_self" alt="3" title="3" href="{{ url_for('three') }}" coords="543,190,643,276" shape="rect">
+    <area target="_self" class="pointer" alt="Floor Scrubber" title="Floor Scrubber" href="javascript:void(0)" coords="326,363,337,366,425,367,429,300,370,235,323,291" shape="poly">
+    <area target="_self" class="down" alt="Back" title="Back" href="{{ url_for('three') }}" coords="3,440,729,545" shape="rect">
 </map>
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-<!-- <script src="js/imageMapResizer.min.js"> </script> -->
     <script>
         imageMapResize();
         // To add:
