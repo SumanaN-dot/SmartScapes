@@ -2,6 +2,9 @@ const textBox = document.getElementById("textbox");
 
 const typeSpeed = 10; // milliseconds per character
 
+// Global variable to track if dialogue is complete
+let isDialogueComplete = false;
+
 // https://medium.com/@praveenpr1998/watching-object-changes-in-javascript-with-proxies-62b1febae0f6
 
 var dialogue = [];
@@ -63,6 +66,17 @@ function openTextbox() {
     textBox.classList.remove("close-text");
     textBox.classList.add("show-text");
     textBox.style.display = "block";
+    isDialogueComplete = true;
+    enableDoor();
+}
+
+function enableDoor() {
+    const doorArea = document.querySelector(".door-link");
+    if (doorArea) {
+        doorArea.style.opacity = "1";
+        doorArea.style.pointerEvents = "auto";
+        doorArea.style.cursor = "pointer";
+    }
 }
 
 function addDialogue(arrayOfSentencesToAdd) {
