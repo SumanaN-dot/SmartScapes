@@ -12,6 +12,10 @@ def home():
 def one_back():
     return render_template('1-b.html')
 
+@app.route('/opening_premise')
+def opening_premise():
+    return render_template('op.html')
+
 @app.route('/two')
 def two():
     return render_template('2.html')
@@ -24,6 +28,18 @@ def three_a():
 def three_b():
     return render_template('3-b.html') 
  
+@app.route('/three_left')
+def three_l():
+    return render_template('3-l.html') 
+
+@app.route('/three_right')
+def three_r():
+    return render_template('3-r.html') 
+
+@app.route('/three')
+def three():
+    return render_template('3.html') 
+
 @app.route('/four_left_with_janitor')
 def four_left_with_janitor():
     return render_template('4-l-with-janitor.html')
@@ -32,7 +48,7 @@ def four_left_with_janitor():
 def four_right():
     return render_template('4-r.html')
 
-@app.route('4')
+@app.route('/four')
 def four():
     return render_template('4.html')
 

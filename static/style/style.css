@@ -55,3 +55,23 @@ img[usemap] {
     transform: scaleX(1);
   }
 }
+
+.pointer {
+  cursor: url('../images/pointerClick.png'), pointer;
+}
+
+.up {
+  cursor: url('../images/arrowU.png'), n-resize;
+}
+
+.down {
+  cursor: url('../images/arrowD.png'), s-resize;
+}
+
+.left {
+  cursor: url('../images/arrowL.png'), w-resize;
+}
+
+.right {
+  cursor: url('../images/arrowR.png'), e-resize;
+}
