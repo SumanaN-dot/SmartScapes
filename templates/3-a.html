@@ -20,18 +20,37 @@
     <area target="_self" class="up" alt="3-b" title="3-b" href="{{ url_for('three_b') }}" coords="1439,2546,2801,3620" shape="rect">
     <area target="_self" class="down" alt="" title="" href="javascript:void(0)" coords="3955,3618,4,5706" shape="rect">
 </map>
+
+<div id="textbox"></div>
+
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-<!-- <script src="js/imageMapResizer.min.js"> </script> -->
+<script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "I've reached the stairwell.",
+                "The stairs stretch upward, each step echoing in the empty space.",
+                "I can continue down to the third floor from here.",
+                "I should keep moving forward."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>

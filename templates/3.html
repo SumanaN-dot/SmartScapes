@@ -23,18 +23,37 @@
     <area target="_self" class="left" alt="" href="{{ url_for('three_l') }}" coords="2,-2,351,3019" shape="rect">
     <area target="_self" class="right" alt="Right" href="{{ url_for('three_r') }}" coords="3650,5,4027,3007" shape="rect">
 </map>
+
+<div id="textbox"></div>
+
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-<!-- <script src="js/imageMapResizer.min.js"> </script> -->
+<script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "This is the main lobby on the fourth floor.",
+                "The space feels larger than the other floors, with high ceilings and pillars.",
+                "I can see stairs on both sides leading up to the third floor.",
+                "Those stairs might lead me closer to finding a way out."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>
