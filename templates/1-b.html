@@ -17,10 +17,14 @@
 <img src="{{ url_for('static', filename='images/1-b.png') }}" alt="The fourth floor group study room" usemap="#image-map">
 
 <map name="image-map">
-    <area target="_self" class="pointer" alt="Study room + dialogue" title="TV" href="{{ url_for('opening_premise') }}" coords="1897,1502,1068,968" shape="rect">
+    <area target="_self" class="pointer" alt="Study room + dialogue" title="TV" href="javascript:void(0)" onclick="showTVMessage()" coords="1897,1502,1068,968" shape="rect">
     <area target="_self" class="left door-link" alt="2" title="Exit Study Room" href="{{ url_for('two') }}" coords="208,2739,2,1143" shape="rect">
 </map>
+
+<div id="textbox"></div>
+
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
@@ -31,6 +35,37 @@
             doorArea.style.pointerEvents = "none";
             doorArea.style.cursor = "not-allowed";
         }
+
+        function showTVMessage() {
+            let newSentences = [
+                "The TV screen turns on with an unsettling message...",
+                "'Human logic is flawed. Prove your intelligence. Solve my challenges to regain control.'",
+                "What is happening? It feels like the security system has in lockdown",
+                "The system is challenging me. I need to prove our intelligence by solving its puzzles.",
+                "Each room in this building holds a task. Solve them, and I regain freedom.",
+                "I need to think carefully.",
+                "Let's move forward and see what I am up against."
+            ];
+            addDialogue(newSentences);
+            
+            // Re-enable door after dialogue completes
+            setTimeout(() => {
+                doorArea.style.opacity = "1";
+                doorArea.style.pointerEvents = "auto";
+                doorArea.style.cursor = "pointer";
+            }, newSentences.length * 3000); 
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+        }
+
+        window.onload = setup;
     </script>
 </body>
 
