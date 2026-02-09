@@ -17,7 +17,7 @@
 <img src="{{ url_for('static', filename='images/1-b.png') }}" alt="The fourth floor group study room" usemap="#image-map">
 
 <map name="image-map">
-    <area target="_self" class="pointer" alt="Study room + dialogue" title="TV" href="javascript:void(0)" onclick="showTVMessage()" coords="1897,1502,1068,968" shape="rect">
+    <area target="_self" class="pointer" alt="Study room + dialogue" title="TV" href="{{ url_for('opening_premise') }}" coords="1897,1502,1068,968" shape="rect">
     <area target="_self" class="left door-link" alt="2" title="Exit Study Room" href="{{ url_for('two') }}" coords="208,2739,2,1143" shape="rect">
 </map>
 
@@ -40,9 +40,9 @@
             let newSentences = [
                 "The TV screen turns on with an unsettling message...",
                 "'Human logic is flawed. Prove your intelligence. Solve my challenges to regain control.'",
-                "What is happening? It feels like the security system has in lockdown",
-                "The system is challenging me. I need to prove our intelligence by solving its puzzles.",
-                "Each room in this building holds a task. Solve them, and I regain freedom.",
+                "What is happening? It feels like the security system has gone into lockdown.",
+                "The system is challenging me. I need to prove my intelligence by solving its puzzles.",
+                "Each room in this building holds a task. Solve them, and I regain freedom in time for the exam.",
                 "I need to think carefully.",
                 "Let's move forward and see what I am up against."
             ];
@@ -63,6 +63,14 @@
             textProps.textIndex = 0;
             dialogue = [];
             proxy = proxyText;
+            
+            // Check if returning from TV screen
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('fromTV') === 'true') {
+                showTVMessage();
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
         }
 
         window.onload = setup;
