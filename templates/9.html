@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask App</title>
+    <title>SmartScapes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
 </head>
 
@@ -16,10 +16,14 @@
         <area target="_self" class="right" alt="10" title="Hallway" href="{{ url_for('ten') }}" coords="4023,3021,2667,2011,2650,759,3256,27,4017,21" shape="poly">
     </map>
 
+    <div id="textbox"></div>
+
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
     <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
+
+        dialogue = ["The Jittery Joe's should be on the other side of this floor."];
 
         function showStudy() {
             let newSentences = ["You've already done enough studying; You have an exam to get to.",
@@ -28,13 +32,11 @@
             addDialogue(newSentences);
         }
 
-        closeTextbox();
-
         function setup() {
-            textProps.dialogueIndex = -1;
-            textProps.textIndex = 0;
-            dialogue = ["The Jittery Joe's should be on the other side of this floor."];
             proxy = proxyText;
+            proxy.dialogueIndex = -1;
+            proxy.textIndex = 0;
+            handleTextbox();
         }
 
         window.onload = setup;

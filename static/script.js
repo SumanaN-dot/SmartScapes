@@ -7,7 +7,7 @@ let isDialogueComplete = false;
 
 // https://medium.com/@praveenpr1998/watching-object-changes-in-javascript-with-proxies-62b1febae0f6
 
-var dialogue = [];
+let dialogue = [];
 
 let textProps = {
     dialogueIndex: -1,
@@ -16,7 +16,7 @@ let textProps = {
 
 let dialogueHandler = {
     set: function (target, property, value, receiver) {
-        return Reflect.set(target, property, value, receiver);
+        return target[property] = value;
     }
 };
 
@@ -25,13 +25,13 @@ let proxy;
 
 
 function revealText(text, proxy) {
-    if (textProps.dialogueIndex == dialogue.length) {
+    if (proxy.dialogueIndex == dialogue.length) {
         closeTextbox();
-    } else if (textProps.textIndex < text.length) {
-        textBox.textContent += text.charAt(textProps.textIndex);
-        textProps.textIndex++;
-        setTimeout(revealText, typeSpeed, text);
-    } else if (textProps.textIndex == text.length) {
+    } else if (proxy.textIndex < text.length) {
+        textBox.textContent += text.charAt(proxy.textIndex);
+        proxy.textIndex++;
+        setTimeout(revealText, typeSpeed, text, proxy);
+    } else if (proxy.textIndex == text.length) {
         enableClick();
         textBox.style.pointerEvents = "auto";
         textBox.style.cursor = "pointer";
@@ -50,19 +50,19 @@ function handleTextbox() {
     disableClick();
     textBox.style.pointerEvents = "none";
     textBox.textContent = '';
-    textProps.dialogueIndex += 1;
-    textProps.textIndex = 0;
+    proxy.dialogueIndex += 1;
+    proxy.textIndex = 0;
     textBox.style.cursor = "wait";
-    revealText(dialogue[textProps.dialogueIndex], proxy);
+    revealText(dialogue[proxy.dialogueIndex], proxy);
 }
 
 function closeTextbox() {
     textBox.classList.add("close-text");
     textBox.classList.remove("show-text");
     textBox.style.display = "none";
-    // Mark dialogue as complete and enable the door link
-    isDialogueComplete = true;
-    enableDoor();
+    // // Mark dialogue as complete and enable the door link
+    // isDialogueComplete = true;
+    // enableDoor();
 }
 
 function openTextbox() {
