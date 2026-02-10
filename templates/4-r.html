@@ -18,17 +18,37 @@
         <area target="_self" class="down" alt="Back" title="Back" href="{{ url_for('four') }}"
             coords="48,3645,5704,4254" shape="rect">
     </map>
+
+    <div id="textbox"></div>
+
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "I've entered the Engagement Wing to the right.",
+                "The hallway looks clear - no floor scrubbers blocking this path!",
+                "I can see an EXIT sign ahead. This might be a better route.",
+                "Let me continue forward and see where this leads."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>

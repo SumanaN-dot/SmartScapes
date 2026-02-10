@@ -24,17 +24,36 @@
         <area target="_self" class="up" alt="Temporary" title="Temporary" href="{{ url_for('five_left') }}" coords="6,1,469,3007"
             shape="rect">
     </map>
+
+    <div id="textbox"></div>
+
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "The TV screen led me here.",
+                "Active Learning classroom has computer workstations.",
+                "The screens are still on. Maybe I can find information about exits or get help.",
+                "There's a hallway to the left. It looks like it leads somewhere deeper into the building."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
 
         function startPuzzle() {
             // to do, skip for now

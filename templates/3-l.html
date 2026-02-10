@@ -20,18 +20,47 @@
     <area target="_self" class="down" alt="Floor Scrubber" title="Back" href="{{ url_for('three') }}" coords="0,388,735,552" shape="rect">
     <area target="_self" class="pointer" alt="3-r"  title="Floor Scrubber" href="javascript:void(0)" onclick="showObstacle()" coords="280,247,423,371" shape="rect">
 </map>
+
+<div id="textbox"></div>
+
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-<!-- <script src="js/imageMapResizer.min.js"> </script> -->
+<script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "I've taken the left corridor from the main lobby.",
+                "The hallway stretches ahead with pillars lining both sides.",
+                "Wait... there's something in the middle of the hallway.",
+                "It looks like a floor scrubber is blocking the path forward."
+            ];
+            addDialogue(newSentences);
+        }
+
+        function showObstacle() {
+            let newSentences = [
+                "The industrial floor scrubber is sitting right in the center of the hallway.",
+                "It's completely blocking my path forward.",
+                "I can't move it - it's too heavy.",
+                "I'll need to find another way around. Let me go back."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>

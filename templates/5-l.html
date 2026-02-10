@@ -20,17 +20,35 @@
     <map name="image-map">
         <area target="_self" class="up" alt="Forward" title="Forward" href="{{ url_for('five_left_a') }}" coords="1760,1788,2872,3586" shape="rect">
     </map>
+
+    <div id="textbox"></div>
+
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
-        
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+
+        function showInitialDialogue() {
+            let newSentences = [
+                "I left the computer lab and stepped into a long hallway.",
+                "The fluorescent lights hum overhead. Tables and printers line the right side.",
+                "There's an exit sign glowing red near the ceiling. I should keep moving forward."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>

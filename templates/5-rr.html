@@ -13,23 +13,62 @@
     <img src="{{ url_for('static', filename='images/5-rr.png') }}" usemap="#image-map">
 
     <map name="image-map">
-        <area target="_self" class="pointer" alt="Digital Media Lab Door" title="Digital Media Lab Door" href="javascript:void(0)" coords="1498,508,2924,3639" shape="rect">
-        <area target="_self" class="pointer" alt="Fire Exit Door" title="Fire Exit Door" href="javascript:void(0)" coords="3493,556,5183,3607" shape="rect">
+        <area target="_self" class="pointer" alt="Digital Media Lab Door" title="Digital Media Lab Door" href="javascript:void(0)" onclick="checkLabDoor()" coords="1498,508,2924,3639" shape="rect">
+        <area target="_self" class="pointer" alt="Fire Exit Door" title="Fire Exit Door" href="javascript:void(0)" onclick="checkExitDoor()" coords="3493,556,5183,3607" shape="rect">
         <area target="_self" class="down" alt="AL_VR Front" title="AL_VR Front" href="{{ url_for('five_right_left') }}" coords="16,3756,5055,4276" shape="rect">
         <area target="_self" class="right" alt="Back" title="Back" href="{{ url_for('five_right') }}" coords="5295,14,5688,4266" shape="rect">
     </map>
+
+    <div id="textbox"></div>
+
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-    <!-- <script src="js/imageMapResizer.min.js"> </script> -->
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "I've reached a corridor with two doors side by side.",
+                "On the left is the Engagement Lab - the door is labeled clearly.",
+                "On the right is an exit door! There's an EXIT sign above it.",
+                "Let me check if either of these doors will open."
+            ];
+            addDialogue(newSentences);
+        }
+
+        function checkLabDoor() {
+            let newSentences = [
+                "I try the Digital Media Lab door, but it's locked.",
+                "The door won't budge - it's secured from the inside.",
+                "This lab isn't accessible during the lockdown.",
+                "I should try the exit door instead."
+            ];
+            addDialogue(newSentences);
+        }
+
+        function checkExitDoor() {
+            let newSentences = [
+                "I approach the exit door with the EXIT sign above it.",
+                "This is a fire exit door - it should lead outside!",
+                "But when I push... it won't open. It's locked too.",
+                "The lockdown must have sealed all the exits. I need to find another way."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>

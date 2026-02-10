@@ -21,18 +21,36 @@
     <!-- THE AREA ABOVE SHOULD REPLACE THE ONE BELOW AT SOME POINT -->
     <area target="_self" class="pointer" alt="TV" title="TV" href="{{ url_for('five_right_left_b_left_to5_left') }}" coords="2291,708,2839,1146" shape="rect">
 </map>
+
+<div id="textbox"></div>
+
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-<!-- <script src="js/imageMapResizer.min.js"> </script> -->
+<script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "I've entered the Active Learning and Virtual Reality Classroom.",
+                "There's a large TV screen mounted on the wall ahead.",
+                "Maybe it can help me escape."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
 
         function showPuzzle() {
             // to implement (this is what we need nupoor for. Skip this)

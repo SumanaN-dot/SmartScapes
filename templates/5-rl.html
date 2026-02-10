@@ -18,20 +18,49 @@
 
 <map name="image-map">
     <area target="_self" class="up" alt="Active Learning and Virtual Reality Clasroom" title="Active Learning and Virtual Reality Clasroom" href="{{ url_for('five_right_left_a') }}" coords="585,440,1439,2224" shape="rect">
-    <area target="_self" class="pointer" alt="Door" title="Door" href="javascript:void(0)" coords="3035,617,3523,2028" shape="rect">
+    <area target="_self" class="pointer" alt="Door" title="Door" href="javascript:void(0)" onclick="checkDoor()" coords="3035,617,3523,2028" shape="rect">
 </map>
+
+<div id="textbox"></div>
+
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-<!-- <script src="js/imageMapResizer.min.js"> </script> -->
+<script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "I've moved down the corridor and found more rooms.",
+                "There's a door on the left labeled 'Active Learning and Virtual Reality Classroom.'",
+                "Another door is on the right side of the hall.",
+                "Maybe one of these rooms can help me find a way out."
+            ];
+            addDialogue(newSentences);
+        }
+
+        function checkDoor() {
+            let newSentences = [
+                "I try the door on the right, but it won't open.",
+                "It's locked - probably another secured classroom.",
+                "The Active Learning classroom on the left seems to be unlocked.",
+                
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>

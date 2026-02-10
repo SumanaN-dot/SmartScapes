@@ -17,22 +17,50 @@
 <img src="{{ url_for('static', filename='images/5-with-wepa.png') }}" usemap="#image-map">
 
 <map name="image-map">
-    <area target="_self" class="pointer" alt="wepa" title="wepa" href="javascript:void(0)" coords="127,198,239,362" shape="rect">
+    <area target="_self" class="pointer" alt="wepa" title="wepa" href="javascript:void(0)" onclick="checkPrinter()" coords="127,198,239,362" shape="rect">
     <area target="_self" class="down" alt="Back" title="Back" href="javascript:void(0)" coords="-1,402,667,498" shape="rect">
     <area target="_self" class="right" alt="Right" title="Right" href="{{ url_for('five_right') }}" coords="382,-1,668,338" shape="rect">
 </map>
+
+<div id="textbox"></div>
+
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-<!-- <script src="js/imageMapResizer.min.js"> </script> -->
+<script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "I've continued down the Engagement Wing corridor.",
+                "There's a WEPA printeron the left - wonder if actuall works in this place?",
+                "I can see exit doors straight ahead through the hallway.",
+                "The corridor also continues to the right. I should keep exploring."
+            ];
+            addDialogue(newSentences);
+        }
+
+        function checkPrinter() {
+            let newSentences = [
+                "It's just a standard WEPA.",
+                "This won't help me get out of the building.",
+                "I should keep looking for another way out."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>
