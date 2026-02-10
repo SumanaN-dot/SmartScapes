@@ -15,16 +15,34 @@
     <img src="{{ url_for('static', filename='images/15.png') }}" alt="ALT-TEXT" usemap="#image-map">
 
     <map name="image-map">
-        <area target="_self" alt="Restrooms" title="Restrooms" href="javascript:void(0)" coords="1947,857,3374,2654" shape="rect">
-        <area target="_self" href="{{ url_for('fifteen_left') }}" coords="3,10,971,3877" shape="rect">
-        <area target="_self" href="{{ url_for('fifteen_right') }}" coords="5164,15,4128,3876" shape="rect">
+        <area target="_self" class="pointer" alt="Restrooms" title="Restrooms" href="javascript:void(0)" onclick="showRestrooms()" coords="1947,857,3374,2654" shape="rect">
+        <area target="_self" class="left" href="{{ url_for('sixteen') }}" title="Main exit" coords="3,10,971,3877" shape="rect">
+        <area target="_self" class="right" href="{{ url_for('fifteen_right') }}" title="Hallway to side exit" coords="5164,15,4128,3876" shape="rect">
     </map>
+    <div id="textbox"></div>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
-        // To add:
-        // - dialogue
+
+        dialogue = ["You free yourself from the elevator and step out into the first floor elevator lobby.",
+            "You're so close to making it out!"
+        ];
+
+        function showRestrooms() {
+            let newSentences = ["It is NOT the time for restroom breaks!"];
+            addDialogue(newSentences);
+        }
+
+        function setup() {
+            proxy = proxyText;
+            proxy.dialogueIndex = -1;
+            proxy.textIndex = 0;
+            handleTextbox();
+        }
+
+        window.onload = setup;
     </script>
 </body>
 

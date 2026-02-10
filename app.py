@@ -180,9 +180,17 @@ def sixteen():
 def seventeen():
     return render_template('17.html')
 
+@app.route('/seventeen_alt')
+def seventeen_alt():
+    return render_template('17-alt.html')
+
 @app.route('/eighteen')
 def eighteen():
     return render_template('18.html')
+
+@app.route('/eighteen_alt')
+def eighteen_alt():
+    return render_template('18-alt.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

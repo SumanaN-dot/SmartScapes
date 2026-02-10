@@ -6,16 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartScapes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <img src="{{ url_for('static', filename='images/17.png') }}" alt="The first floor exit" usemap="#image-map">
+    <img src="{{ url_for('static', filename='images/17-alt.png') }}" alt="Hallway to Exam Room" usemap="#image-map">
 
     <map name="image-map">
-        <area target="_self" href="{{ url_for('eighteen') }}" coords="713,22,3698,3633" shape="rect">
+        <area target="_self" class="right" title="Exam room" href="{{ url_for('eighteen_alt') }}"
+            coords="3694,983,4300,2642" shape="rect">
     </map>
     <div id="textbox"></div>
 
@@ -24,7 +22,11 @@
     <script>
         imageMapResize();
 
-        dialogue = ["You defeated the WEPA printer! The only thing left to do is walk through the exit doors."];
+        console.log(status.checkedBulletinBoard);
+
+        dialogue = ["You beat the AI!",
+            "All you have to do is walk through the exam room doors."
+        ];
 
         function setup() {
             proxy = proxyText;

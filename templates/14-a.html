@@ -39,29 +39,26 @@
                 "...and occupying a study room meant for groups.",
                 "...",
                 "'Why would you not just kick me out of the study room?'",
-                "The voice doesn't respond, and you start to lose hope in escaping until you hearing static comming from the control panels.",
+                "The voice doesn't respond, and you start to lose hope in escaping until you hearing static coming from the control panels.",
                 "'Maybe I should check that out...'"
             ];
         } else {
             dialogue = ["The elevator doors close behind you.",
-                "You frantically push the first floor and the emergency buttons to no avail.",
+                "You push the first floor buttons to no avail.",
                 "A robotic voice calls out: 'You may not leave the building.'",
-                "'Missing your exam is your punishment for being inconsiderate of other guests...'",
-                "...and occupying a study room meant for groups.",
-                "...",
-                "'Why would you not just kick me out of the study room?'",
-                "The voice doesn't respond, and you start to lose hope in escaping until you hearing static comming from the control panels.",
+                "You start to lose hope in escaping until you hearing static coming from the control panels.",
                 "'Maybe I should check that out...'"
             ];
         }
 
         function startPuzzle() {
+            let newSentences;
             if (checkedBulletin) {
-                let newSentences = ["A popup would appear here with double the questions (ASK NUPOOR)",
+                newSentences = ["A popup would appear here",
                     "for now, i'll just redirect you to 15-b"
                 ];
             } else {
-                let newSentences = ["A popup would appear here",
+                newSentences = ["A popup would appear here",
                 "for now, i'll just redirect you to fifteen"    
             ];
             }
