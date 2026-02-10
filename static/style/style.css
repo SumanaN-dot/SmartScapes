@@ -28,6 +28,12 @@ img[usemap] {
   font-size: 2.5vh;
 }
 
+.important {
+  font-family: sans-serif;
+  color: #e11800;
+  font-weight: bold;
+}
+
 .close-text {
   display: none;
   animation: close-text 500ms ease-out forwards;

@@ -91,9 +91,7 @@ function addDialogue(arrayOfSentencesToAdd) {
     // just haven't clicked the textbox to close the dialogue box,
     // 
     if (proxy.dialogueIndex > -1 &&
-        !(proxy.dialogueIndex == dialogue.length &&
-        proxy.textIndex == dialogue[proxy.dialogueIndex -1].length)
-    ) {
+        proxy.dialogueIndex == dialogue.length) {
         proxy.dialogueIndex--;
     }
 
