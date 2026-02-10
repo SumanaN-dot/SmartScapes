@@ -160,6 +160,10 @@ def fourteen_with_janitor():
 def fifteen():
     return render_template('15.html')
 
+@app.route('/fifteen_b')
+def fifteen_b():
+    return render_template('15-b.html')
+
 @app.route('/fifteen_left')
 def fifteen_left():
     return render_template('15-l.html')

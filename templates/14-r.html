@@ -43,6 +43,7 @@
             set(target, property, value, receiver) {
                 if (property == "dialogueIndex" && dialogue[value] == "Computer Science Mass Exam at 8:00am MLC 350") {
                     textBox.classList.add("important");
+                    localStorage.setItem("checkedBulletin", true);
                 } else if (property == "textIndex" &&
                     dialogue[target.dialogueIndex] == "You don't get to think about it before you're shoved into the elevator by a janitorial cleaning device."
                     && value == dialogue[target.dialogueIndex].length
