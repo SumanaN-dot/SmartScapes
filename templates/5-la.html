@@ -20,18 +20,36 @@
         <area target="_self" class="left" alt="Entrance to the Stairs" title="Entrance to the Stairs" href="{{ url_for('six') }}" coords="1583,3013,0,11"
             shape="rect">
     </map>
+
+    <div id="textbox"></div>
+
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-    <!-- <script src="js/imageMapResizer.min.js"> </script> -->
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
-        
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+
+        function showInitialDialogue() {
+            let newSentences = [
+                "I walked further down the hallway. The walls are bare and the carpet stretches on.",
+                "To my left, there's an opening that leads to a stairwell.",
+                "I should head there and see if it leads to an exit."
+                
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>

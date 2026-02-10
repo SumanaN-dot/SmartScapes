@@ -46,12 +46,7 @@
             ];
             addDialogue(newSentences);
             
-            // Re-enable door after dialogue completes
-            setTimeout(() => {
-                doorArea.style.opacity = "1";
-                doorArea.style.pointerEvents = "auto";
-                doorArea.style.cursor = "pointer";
-            }, newSentences.length * 1200); 
+             
         }
 
         closeTextbox();
