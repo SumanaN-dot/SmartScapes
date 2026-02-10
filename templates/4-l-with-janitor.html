@@ -17,21 +17,50 @@
 <img src="{{ url_for('static', filename='images/4-l-with-janitor.png') }}" alt = "Blocked hallway" usemap="#image-map">
 
 <map name="image-map">
-    <area target="_self" class="pointer" alt="Floor Scrubber" title="Floor Scrubber" href="javascript:void(0)" coords="271,220,371,346" shape="rect">
+    <area target="_self" class="pointer" alt="Floor Scrubber" title="Floor Scrubber" href="javascript:void(0)" onclick="showObstacle()" coords="271,220,371,346" shape="rect">
     <area target="_self" class="down" alt="Back" title="Back" href="{{ url_for('four') }}" coords="0,401,660,498" shape="rect">
 </map>
+
+<div id="textbox"></div>
+
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-<!-- <script src="js/imageMapResizer.min.js"> </script> -->
+<script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "I've entered the East Wing corridor.",
+                "Wait, I can see an EXIT sign up ahead! Finally, a way out!",
+                "But... there's that floor scrubber again, blocking the middle of the hallway.",
+                "I need to find a way past it or move it somehow."
+            ];
+            addDialogue(newSentences);
+        }
+
+        function showObstacle() {
+            let newSentences = [
+                "The floor scrubber is just sitting here, right in my path to the exit.",
+                "It's too heavy for me to push by myself.",
+                "Let's try the other side of the hallway.",
+                
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>

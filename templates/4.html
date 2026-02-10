@@ -20,18 +20,37 @@
     <area target="_self" class="left" alt="Left" title="East Wing" href="{{ url_for('four_left_with_janitor') }}" coords="3,-3,1658,4255" shape="rect">
     <area target="_self" class="right" alt="Right" title="Engagement Wing" href="{{ url_for('four_right') }}" coords="4035,-3,5700,4255" shape="rect">
 </map>
+
+<div id="textbox"></div>
+
 <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
-<!-- <script src="js/imageMapResizer.min.js"> </script> -->
+<script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "I've finally reached the third floor.",
+                "This lobby looks similar to the fourth floor - open space with study areas and pillars.",
+                "There are two wings I can explore from here: the East Wing to the left and the Engagement Wing to the right.",
+                "Maybe one of these paths will lead me to an exit."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>
