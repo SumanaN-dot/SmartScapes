@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask App</title>
+    <title>SmartScapes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
 </head>
 
@@ -12,17 +12,34 @@
     <img src="{{ url_for('static', filename='images/14-with-janitor.png') }}" alt="ALT-TEXT" usemap="#image-map">
 
     <map name="image-map">
-        <area target="_self" href="javascript:void(0)" onclick="showObstacle()" coords="100,101,609,443" shape="rect">
-        <area target="_self" href="{{ url_for('fourteen_with_janitor') }}" coords="7,455,668,495" shape="rect">
+        <area target="_self" class="pointer" title="Janitorial Cleaning Device(?)" href="javascript:void(0)" onclick="showObstacle()" coords="100,101,609,443" shape="rect">
+        <area target="_self" class="down" title="Back" href="{{ url_for('eleven_b') }}" coords="7,455,668,495" shape="rect">
     </map>
+    <div id="textbox"></div>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
-        // To add:
-        // - dialogue
 
-        // showObstacle()
+        dialogue = ["The janitor must've left their...floor cleaner(?) in the elevator lobby."];
+
+        function showObstacle() {
+            let newSentences = [ "You try to walk around the floor cleaner(?), but it blocks your path.",
+                "...?", 
+                "Can anything be easy? You have to complete the computer's game at Jittery Joe's first."
+            ];
+            addDialogue(newSentences);
+        }
+
+        function setup() {
+            proxy = proxyText;
+            proxy.dialogueIndex = -1;
+            proxy.textIndex = 0;
+            handleTextbox();
+        }
+
+        window.onload = setup;
     </script>
 </body>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask App</title>
+    <title>SmartScapes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
 </head>
 
@@ -15,19 +15,39 @@
     <img src="{{ url_for('static', filename='images/12.png') }}" alt="Hallway to 2nd Floor Exit" usemap="#image-map">
     
     <map name="image-map">
-        <area target="_self" alt="security desk, dialogue" href="javascript:void(0)" onclick="showSecDesk()" coords="5691,4263,5266,82" shape="rect">
-        <area target="_self" alt="2nd floor exit, dialogue" title="2nd floor exit, dialogue" href="javascript:void(0)" onclick="showSecExit()" coords="2128,332,4833,3069" shape="rect">
-        <area target="_self" alt="13" href="{{ url_for('thirteen') }}" coords="11,25,1131,4279" shape="rect">
+        <area target="_self" class="right" alt="Security Desk" title="Security Desk" href="javascript:void(0)" onclick="showSecDesk()" coords="5691,4263,5266,82" shape="rect">
+        <area target="_self" class="up" alt="Second Floor Exit" title="Second Floor Exit" href="javascript:void(0)" onclick="showSecExit()" coords="2128,332,4833,3069" shape="rect">
+        <area target="_self" class="left" alt="Jittery Joe's"title="Jittery Joe's" href="{{ url_for('thirteen') }}" coords="11,25,1131,4279" shape="rect">
     </map>
+    <div id="textbox"></div>
 
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
-        // To add:
-        // - dialogue
 
-        // showSecDesk()
-        // showSecExit()
+        dialogue = ["The Jittery Joe's is on your left."];
+
+        function showSecDesk() {
+            let newSentences = ["The security desk just out of view on your right is unattended."];
+            addDialogue(newSentences);
+        }
+
+        function showSecExit() {
+            let newSentences = ["The security exit is locked...",
+                "That doesn't seem safe."
+            ];
+            addDialogue(newSentences);
+        }
+
+        function setup() {
+            proxy = proxyText;
+            proxy.dialogueIndex = -1;
+            proxy.textIndex = 0;
+            handleTextbox();
+        }
+
+        window.onload = setup;
     </script>
 </body>
 

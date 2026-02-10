@@ -120,10 +120,6 @@ def eleven_a():
 def eleven_b():
     return render_template('11b.html')
 
-@app.route('/eleven_c')
-def eleven_c():
-    return render_template('11c.html')
-
 @app.route('/twelve')
 def twelve():
     return render_template('12.html')
