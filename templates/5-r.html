@@ -18,17 +18,37 @@
         <area target="_self" class="right" alt="Right" title="Right" href="{{ url_for('five_right_right') }}"
             coords="1953,838,2451,3237" shape="rect">
     </map>
+
+    <div id="textbox"></div>
+
     <script src="{{ url_for('static', filename='imageMapResizer.min.js') }}"> </script>
+    <script src="{{ url_for('static', filename='script.js') }}"> </script>
     <script>
         imageMapResize();
         
-        
-        const dialogue = [
-            // Add dialogue objects here
-        ];
-        
-        // To add:
-        // - dialogue
+        function showInitialDialogue() {
+            let newSentences = [
+                "I've turned right and entered a narrower side corridor.",
+                "The hallway is quieter here, with a door visible at the end.",
+                "There are paths branching off to the left and right.",
+                "I should check both directions to find a way out."
+            ];
+            addDialogue(newSentences);
+        }
+
+        closeTextbox();
+
+        function setup() {
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
+            dialogue = [];
+            proxy = proxyText;
+            
+            
+            showInitialDialogue();
+        }
+
+        window.onload = setup;
     </script>
 
 </body>
