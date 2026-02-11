@@ -85,8 +85,6 @@ function addDialogue(arrayOfSentencesToAdd) {
         dialogue.push(sentence);
     }
 
-    console.log(textBox.classList);
-
     if (textBox.classList.contains('close-text') && proxy.dialogueIndex > -1) {
         proxy.dialogueIndex--;
         proxy.textIndex = 0;
@@ -98,6 +96,11 @@ function addDialogue(arrayOfSentencesToAdd) {
         proxy.textIndex = 0;
         proxy.dialogue--;
     } else if (textBox.classList.contains('close-text')) {
+        openTextbox();
+        handleTextbox(); 
+    } else if (!textBox.classList.contains('close-text') && proxy.dialogueIndex == -1) {
+        proxy.dialogueIndex++;
+        proxy.textIndex = 0;
         openTextbox();
         handleTextbox();
     }

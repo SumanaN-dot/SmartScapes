@@ -18,7 +18,7 @@
 
 <map name="image-map">
     <area target="_self" class="pointer" alt="Study room + dialogue" title="TV" href="{{ url_for('opening_premise') }}" coords="1897,1502,1068,968" shape="rect">
-    <area target="_self" class="left door-link" alt="2" title="Exit Study Room" href="{{ url_for('two') }}" coords="208,2739,2,1143" shape="rect">
+    <area target="_self" id="door" class="left" alt="2" title="Exit Study Room" href="{{ url_for('two') }}" coords="208,2739,2,1143" shape="rect">
 </map>
 
 <div id="textbox"></div>
@@ -29,12 +29,7 @@
         imageMapResize();
         
         // Hide the door link until the dialogue is over
-        const doorArea = document.querySelector(".door-link");
-        if (doorArea) {
-            doorArea.style.opacity = "0.5";
-            doorArea.style.pointerEvents = "none";
-            doorArea.style.cursor = "not-allowed";
-        }
+        const door = document.getElementById("door");
 
         function showTVMessage() {
             let newSentences = [
@@ -45,11 +40,9 @@
                 "Let's move forward and see what I am up against."
             ];
             addDialogue(newSentences);
-            
-             
+            console.log(dialogue);
+            console.log(proxy.dialogueIndex); 
         }
-
-        closeTextbox();
 
         function setup() {
             textProps.dialogueIndex = -1;
@@ -63,6 +56,10 @@
                 showTVMessage();
                 
                 window.history.replaceState({}, document.title, window.location.pathname);
+                door.href = "{{ url_for('two') }}";
+            } else {
+                dialogue = ["You hear a click from the door and static from the tv."];
+                handleTextbox();
             }
         }
 

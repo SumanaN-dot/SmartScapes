@@ -115,6 +115,9 @@
         const consent = document.getElementById("consent");
         const controls = document.getElementById("controls");
 
+        localStorage.setItem("checkedBulletin", false);
+        localStorage.setItem("premiseOver", false);
+
         function acceptConsent() {
             consent.style.display = "none";
             showControls();
