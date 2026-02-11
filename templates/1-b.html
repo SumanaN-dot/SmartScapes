@@ -18,7 +18,7 @@
 
 <map name="image-map">
     <area target="_self" class="pointer" alt="Study room + dialogue" title="TV" href="{{ url_for('opening_premise') }}" coords="1897,1502,1068,968" shape="rect">
-    <area target="_self" id="door" class="left" alt="2" title="Exit Study Room" href="{{ url_for('two') }}" coords="208,2739,2,1143" shape="rect">
+    <area target="_self" id="door" class="left" alt="2" title="Exit Study Room" href="javascript:void(0)" onclick="showDoor()" coords="208,2739,2,1143" shape="rect">
 </map>
 
 <div id="textbox"></div>
@@ -40,8 +40,14 @@
                 "Let's move forward and see what I am up against."
             ];
             addDialogue(newSentences);
-            console.log(dialogue);
-            console.log(proxy.dialogueIndex); 
+        }
+
+        function showDoor() {
+            let newSentences = [
+                "The door is locked.",
+                "'Let's check out the tv.'"
+            ]
+            addDialogue(newSentences);
         }
 
         function setup() {
