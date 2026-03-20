@@ -63,7 +63,6 @@
                 
                 window.history.replaceState({}, document.title, window.location.pathname);
                 door.href = "{{ url_for('two') }}";
-                door.onclick = null;
             } else {
                 dialogue = ["You hear a click from the door and static from the tv."];
                 handleTextbox();

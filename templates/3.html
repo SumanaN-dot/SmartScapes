@@ -34,32 +34,22 @@
         function showInitialDialogue() {
             let newSentences = [
                 "The main lobby on the fourth floor... but something feels terribly wrong here.",
-                "Stairs on both sides lead downward into the darkness below. Could there be another way out?" 
+                "Stairs on both sides lead downward into the darkness below. Could there be another way out?"
+                
             ];
             addDialogue(newSentences);
         }
 
-        function showExplore() {
-            let newSentences = ["'Is there anywhere else I haven't checked?'"];
-            addDialogue(newSentences);
-        }
+        closeTextbox();
 
         function setup() {
-            proxy = proxyText;
-            proxy.dialogueIndex = -1;
-            proxy.textIndex = 0;
+            textProps.dialogueIndex = -1;
+            textProps.textIndex = 0;
             dialogue = [];
+            proxy = proxyText;
             
-            // Check if returning from TV screen
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('fromLeft') === 'true' || urlParams.get('fromRight') === 'true') {
-                showExplore();
-                
-                window.history.replaceState({}, document.title, window.location.pathname);
-                showExplore();
-            } else {
-                showInitialDialogue();
-            }
+            
+            showInitialDialogue();
         }
 
         window.onload = setup;
